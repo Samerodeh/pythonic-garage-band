@@ -11,47 +11,47 @@ def test_version():
 def test_guitarist_str():
     sam1 = Guitarist("sam1")
     actual = str(sam1)
-    expected = "I am sam1 and I play guitar"
+    expected = "Guitarist--->sam1"
     assert actual == expected
 
 
 def test_guitarist_repr():
     sam1 = Guitarist("sam1")
     actual = repr(sam1)
-    expected = "Guitarist instance. Name = sam1"
+    expected = "{self.name}"
     assert actual == expected
 
 
 def test_Drummer_repr():
     sam2 = Drummer("sam2")
     actual = str(sam2)
-    expected = "I am sam2 and I play drums"
+    expected = "Drummer--->sam2"
     assert actual == expected
 
 
 def test_drummer_repr():
     sam2 = Drummer("sam2")
     actual = repr(sam2)
-    expected = "Drummer instance. Name = sam2"
+    expected = "sam2"
     assert actual == expected
 
 
 def test_bassist_str():
     sam3 = Bassist("sam3")
     actual = str(sam3)
-    expected = "I am sam3 and I play bass"
+    expected = "Bassist--->sam3"
     assert actual == expected
 
 
 def test_bassist_repr():
     sam3 = Bassist("sam3")
     actual = repr(sam3)
-    expected = "Bassist instance. Name = sam3"
+    expected = "sam3"
     assert actual == expected
 
 
 def test_band_name():
-    samBand = Band("samBand", [])
+    samBand = Band("samBand")
 
     assert samBand.name == "samBand"
 
@@ -59,19 +59,19 @@ def test_band_name():
 def test_guitarist():
     jimi = Guitarist("sam1")
     assert jimi.name == "sam1"
-    assert jimi.get_instrument() == "guitar"
+    assert jimi.get_instrument() == "Guitarist"
 
 
 def test_bassist():
     sam3 = Bassist("sam3")
     assert sam3.name == "sam3"
-    assert sam3.get_instrument() == "bass"
+    assert sam3.get_instrument() == "Bassist"
 
 
 def test_drummer():
     sam2 = Drummer("sam2 Baker")
     assert sam2.name == "sam2 Baker"
-    assert sam2.get_instrument() == "drums"
+    assert sam2.get_instrument() == "Drummer"
 
 
 def test_instruments(one_band):
@@ -118,7 +118,7 @@ def test_play_solos_for_whole_band(one_band):
 
 def test_to_list():
     assert Band.to_list() == []
-    Band("samBand", [])
+    Band("", [])
     assert len(Band.to_list()) == 1
 
 
@@ -142,9 +142,9 @@ def samBand_data():
 @pytest.fixture
 def one_band():
     some_band = Band(
-        "samBand",
-        [Guitarist("sam1"), Bassist("sam3"), Drummer("sam2"),],
-    )
+        "samBand", 
+        [Guitarist("sam1"), Bassist("sam3"), Drummer("sam2"),]
+        )
     return some_band
 
 
